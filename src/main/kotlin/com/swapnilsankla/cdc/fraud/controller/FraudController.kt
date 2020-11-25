@@ -18,3 +18,4 @@ class FraudController(@Autowired private val fraudService: FraudService) {
 		return ResponseEntity.ok(fraudStatus)
 	}
 }
+

@@ -48,6 +48,8 @@ dependencies {
         exclude group: "io.ktor", module:"ktor-server-netty"
         exclude group: "io.ktor", module:"ktor-network-tls-certificates"
     }
+
+    testImplementation("au.com.dius:pact-jvm-provider-junit5:4.0.10")
 }
 
 compileKotlin {
