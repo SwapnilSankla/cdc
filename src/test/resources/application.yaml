@@ -1,0 +1,3 @@
+loan-gateway:
+  fraud-service-port: 1234
+  fraud-service-url: http://localhost:${loan-gateway.fraud-service-port}/fraud/{customerId}
