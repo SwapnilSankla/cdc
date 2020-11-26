@@ -3,6 +3,7 @@ package com.swapnilsankla.cdc.loangateway.cdc
 import au.com.dius.pact.provider.MessageAndMetadata
 import au.com.dius.pact.provider.PactVerifyProvider
 import au.com.dius.pact.provider.junit.Provider
+import au.com.dius.pact.provider.junit.loader.PactBroker
 import au.com.dius.pact.provider.junit.loader.PactFolder
 import au.com.dius.pact.provider.junit5.AmpqTestTarget
 import au.com.dius.pact.provider.junit5.PactVerificationContext
@@ -15,7 +16,7 @@ import org.junit.jupiter.api.TestTemplate
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.boot.test.context.SpringBootTest
 
-@PactFolder("target/pacts")
+@PactBroker(host = "localhost", port = "9292")
 @Provider("loan_gateway")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 class LoanApplicationEventProviderTest {

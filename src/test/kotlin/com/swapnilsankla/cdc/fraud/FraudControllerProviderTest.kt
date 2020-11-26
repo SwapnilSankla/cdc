@@ -2,6 +2,7 @@ package com.swapnilsankla.cdc.fraud
 
 import au.com.dius.pact.provider.junit.Provider
 import au.com.dius.pact.provider.junit.State
+import au.com.dius.pact.provider.junit.loader.PactBroker
 import au.com.dius.pact.provider.junit.loader.PactFolder
 import au.com.dius.pact.provider.junit5.HttpTestTarget
 import au.com.dius.pact.provider.junit5.PactVerificationContext
@@ -23,7 +24,7 @@ import org.springframework.test.context.ActiveProfiles
 @ActiveProfiles("test")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Import(FraudControllerProviderTest.TestConfiguration::class)
-@PactFolder("target/pacts")
+@PactBroker(host = "localhost", port = "9292")
 @Provider("fraud_service")
 class FraudControllerProviderTest {
     @LocalServerPort
