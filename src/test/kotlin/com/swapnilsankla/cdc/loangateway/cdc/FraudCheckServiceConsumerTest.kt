@@ -43,7 +43,7 @@ class FraudCheckServiceConsumerTest {
     @Pact(provider = "fraud_service", consumer = "loan_gateway")
     fun fraudulentCustomer(pactDsl: PactDslWithProvider): RequestResponsePact {
         return pactDsl
-            .given("Customer with id 2 is setup to return false fraudulent status")
+            .given("Customer with id 2 is setup to return true fraudulent status")
             .uponReceiving("When fraud status is requested for fraudulent customer")
             .method("GET")
             .path("/fraud/2")
