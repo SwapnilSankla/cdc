@@ -45,7 +45,7 @@ class FraudControllerProviderTest {
         value =
         [
             "Customer with id 1 is setup to return false fraudulent status",
-            "Customer with id 2 is setup to return false fraudulent status",
+            "Customer with id 2 is setup to return true fraudulent status",
             "Customer with id 3 is not setup"
         ]
     )
