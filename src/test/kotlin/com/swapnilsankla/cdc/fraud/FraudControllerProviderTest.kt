@@ -3,10 +3,10 @@ package com.swapnilsankla.cdc.fraud
 import au.com.dius.pact.provider.junit.Provider
 import au.com.dius.pact.provider.junit.State
 import au.com.dius.pact.provider.junit.loader.PactBroker
-import au.com.dius.pact.provider.junit.loader.PactFolder
 import au.com.dius.pact.provider.junit5.HttpTestTarget
 import au.com.dius.pact.provider.junit5.PactVerificationContext
 import au.com.dius.pact.provider.junit5.PactVerificationInvocationContextProvider
+import com.swapnilsankla.cdc.PactVerificationResultExtension
 import com.swapnilsankla.cdc.fraud.model.CustomerNotFoundException
 import com.swapnilsankla.cdc.fraud.model.FraudCheck
 import com.swapnilsankla.cdc.fraud.service.FraudService
@@ -24,6 +24,7 @@ import org.springframework.test.context.ActiveProfiles
 @ActiveProfiles("test")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Import(FraudControllerProviderTest.TestConfiguration::class)
+@ExtendWith(PactVerificationResultExtension::class)
 @PactBroker(host = "localhost", port = "9292")
 @Provider("fraud_service")
 class FraudControllerProviderTest {
@@ -65,3 +66,4 @@ class FraudControllerProviderTest {
         }
     }
 }
+

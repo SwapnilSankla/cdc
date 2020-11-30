@@ -9,6 +9,7 @@ import au.com.dius.pact.provider.junit5.AmpqTestTarget
 import au.com.dius.pact.provider.junit5.PactVerificationContext
 import au.com.dius.pact.provider.junit5.PactVerificationInvocationContextProvider
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+import com.swapnilsankla.cdc.PactVerificationResultExtension
 import com.swapnilsankla.cdc.loangateway.model.FraudCheck
 import com.swapnilsankla.cdc.loangateway.model.LoanApplication
 import org.junit.jupiter.api.BeforeEach
@@ -19,6 +20,7 @@ import org.springframework.boot.test.context.SpringBootTest
 @PactBroker(host = "localhost", port = "9292")
 @Provider("loan_gateway")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
+@ExtendWith(PactVerificationResultExtension::class)
 class LoanApplicationEventProviderTest {
     @BeforeEach
     fun setup(context: PactVerificationContext) {
