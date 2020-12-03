@@ -3,3 +3,5 @@ server:
 
 loan-gateway:
   fraud-service-url: http://localhost:8080/fraud/{customerId}
+
+app.version: ${version}
