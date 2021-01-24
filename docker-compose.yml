@@ -1,0 +1,21 @@
+version: "2.4"
+services:
+  postgres-db:
+    image: postgres:latest
+    container_name: postgres-db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: pactdb
+
+  pact-broker:
+    image: pactfoundation/pact-broker:latest
+    container_name: pact-broker
+    depends_on:
+      - postgres-db
+    ports:
+      - "9292:9292"
+    environment:
+      PACT_BROKER_DATABASE_URL: "postgres://user:password@postgres-db/pactdb"
