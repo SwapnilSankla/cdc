@@ -1,0 +1,16 @@
+#ci.gocd.yaml
+pipelines:
+  loan-gateway-build:
+    materials:
+      cdc:
+        git: https://github.com/SwapnilSankla/cdc.git
+        branch: master
+    stages:
+      - build:
+          clean_workspace: true
+          jobs:
+            build:
+              tasks:
+                - exec:
+                    command: sh
+                    arguments: "gradle clean build"
