@@ -8,7 +8,7 @@ pipelines:
     stages:
       - build:
           clean_workspace: true
-          jobs:
+          - jobs:
             build:
               tasks:
                 - exec:
