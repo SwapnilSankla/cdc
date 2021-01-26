@@ -19,3 +19,33 @@ services:
       - "9292:9292"
     environment:
       PACT_BROKER_DATABASE_URL: "postgres://user:password@postgres-db/pactdb"
+
+  gocd-server:
+    image: gocd/gocd-server:v19.1.0
+
+    ports:
+      - "8153:8153"
+      - "8154:8154"
+
+    volumes:
+      - ./data:/godata
+      - ./data/home:/home/go
+      - ./scripts/server:/docker-entrypoint.d
+      - ./scripts/shared:/shared
+
+    environment:
+      - GO_SERVER_SYSTEM_PROPERTIES=-Dcruise.material.update.interval=2000 -Dmaterial.update.idle.interval=2000
+
+  gocd-agent:
+    image: gocd/gocd-agent-alpine-3.8:v19.1.0
+
+    environment:
+      - GO_SERVER_URL=https://gocd-server:8154/go
+      - AGENT_AUTO_REGISTER_KEY=agent-autoregister-key
+
+    volumes:
+      - ./scripts/agent:/docker-entrypoint.d
+      - ./scripts/shared:/shared
+
+    depends_on:
+      - gocd-server
