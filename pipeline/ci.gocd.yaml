@@ -1,4 +1,5 @@
 #ci.gocd.yaml
+format_version: 9
 pipelines:
   loan-gateway-build:
     materials:
@@ -7,6 +8,7 @@ pipelines:
         branch: master
     stages:
       - build:
+          clean_workspace: true
           jobs:
             build:
               tasks:
